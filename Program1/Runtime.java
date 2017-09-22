@@ -17,9 +17,9 @@ public class Runtime {
 		return input;
 	}
 
-	public static int[] MergeSort(int[] input) {
+	/*public static int[] MergeSort(int[] input) {
 		
-	}
+	}*/
 
 	public static void main(String[] args) {
 		int[] testData = new int[] {5,2,7,4,2,6,9,0,4,6,7,3,1,3,8,9,7,5,6,3,4};
