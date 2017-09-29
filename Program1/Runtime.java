@@ -193,12 +193,6 @@ public class Runtime {
 			
 			
 		}
-		
-		try {
-		    Files.write(Paths.get("mergeTimes.txt"), (Integer.toString(30) + "\n").getBytes(), StandardOpenOption.APPEND);
-		}catch (IOException e) {
-		    //exception handling left as an exercise for the reader
-		}
 
 	}
 }
