@@ -1,0 +1,16 @@
+Algorithim Design
+Aidan McCoy
+
+A (vertex) coloring of a graph is an assignment of color to each of the vertices such that no two adjacent
+vertices share the same color. See section 3.1 of your text for an example of a coloring of a map.
+You will implement an algorithm to determine if a graph is two-colorable, that is if there is a coloring of the
+graph that uses no more than two colors. You will also determine how many connected components there
+are
+
+-----------------------------------------------------------------------------
+BipartiteCheck(A)
+
+Input: A list of pairs of numbers representing edges between verticies in an undirected graph.
+Output: -1 if the graph is not bipartite or the number of connected components if the graph is bipartite.
+
+
