@@ -7,10 +7,37 @@ You will implement an algorithm to determine if a graph is two-colorable, that i
 graph that uses no more than two colors. You will also determine how many connected components there
 are
 
------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 BipartiteCheck(A)
 
 Input: A list of pairs of numbers representing edges between verticies in an undirected graph.
 Output: -1 if the graph is not bipartite or the number of connected components if the graph is bipartite.
 
+Color 1 = C1
+Color 2 = C2
+
+Array of verticies V[]
+
+Find vertex with most edges V[i]
+Set V[i] color to C1
+
+For each of v0's neighbors
+	if SetColor(Color, A, v0's neighbor) == -1
+		return -1
+	
+
+--------------------------------------------------------------------------------
+SetColor(Color, B, Vertex)
+
+Input: A color to set the current vertex to, an array of vertecies and edges B, 
+Which vertex to set the color of
+Output: Number of connected components or -1 if it is not bipartite
+
+If Vertex's color is set to the opposite of Color
+	Return -1
+Else
+	For each of Vertex's neighbors
+		If SetColor (ColorOpposite, B, VertexNeighbor) == -1
+			return -1
+return 0
 
