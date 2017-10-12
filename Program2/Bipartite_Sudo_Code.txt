@@ -41,3 +41,19 @@ Else
 			return -1
 return 0
 
+
+--------------------------------------------------------------------------------
+Graph description
+
+-Graph 1:
+	This one is important because it contains a vertex that is at the end of
+a single edge. When there are no neighbors, this becomes an edge case.
+
+-Graph 2:
+	This is important because it is only one cycle, so dealing with the way 
+the program exits with a completion is key to a sucessful bipartite decision.
+
+-Graph 3:
+	This is the oppostie of graph 2 as all verticies are connected to all 
+other verticies. This is important because it shows a case that is not bipartite
+at all and is an edge case and needs to be dealt with properly.
