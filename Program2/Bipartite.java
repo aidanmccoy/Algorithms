@@ -1,9 +1,13 @@
 import java.io.*;
+import java.util.LinkedList;
 import java.lang.Math.*; 
 import java.util.Arrays;
 import java.util.Scanner;	
 
 public class Bipartite {
+	int[] colors = new int[numVerticies];
+
+
 	public static void main(String[] args) throws IOException {
 		int[][] verticies;
 		int currVertex;
@@ -11,7 +15,7 @@ public class Bipartite {
 		int numVerticies = Math.toIntExact(file.length() / 4);
 
 		System.out.println("Num verticies is " + numVerticies);
-		verticies = new int[numVerticies][numVerticies];
+		verticies = new int[numVerticies][numVerticies + 1];
 
 		Scanner sc = new Scanner (file);
 
@@ -24,9 +28,9 @@ public class Bipartite {
 			verticies[currVertex][verticies[currVertex][0]] = sc.nextInt();
 			verticies[currVertex][0]++;
 		} 
-		PrintArray(verticies, numVerticies);
 
 		CheckBipartite(verticies, numVerticies);
+
 	}
 
 	private static void PrintArray(int[][] arr, int size) {
@@ -39,6 +43,29 @@ public class Bipartite {
 	}
 
 	private static void CheckBipartite(int[][] arr, int numVerticies) {
+		int sourceVertex = 0;
+		int numColored = 1;
+
+		while (numColored < numVerticies) {
+			
+		}
+
+
+	
+		PrintArray(arr, numVerticies);
+
+
+		System.out.println("sourceVertex is " + sourceVertex);
+	}
+
+	private static void ColorSection(int[][] arr, int sourceVertex) {
+		LinkedList<Integer> nextVerticies;
+
+		nextVerticies = new LinkedList<Integer>();	
+		while (nextVerticies.size() != 0) {
+
+		}
+
 
 	}
 }
