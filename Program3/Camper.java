@@ -6,10 +6,6 @@ public class Camper {
 	public int biketime;
 	public int totaltime;
 	public int runBiketime;
-	
-	
-
-
 
 	public Camper(int id, int swimtime, int runtime, int biketime) {
 		super();
@@ -17,7 +13,7 @@ public class Camper {
 		this.swimtime = swimtime;
 		this.runtime = runtime;
 		this.biketime = biketime;
-		
+
 		this.runBiketime = this.runtime + this.biketime;
 		this.totaltime = this.swimtime + this.runBiketime;
 	}
@@ -53,7 +49,7 @@ public class Camper {
 	public int getId() {
 		return this.id;
 	}
-	
+
 	public int getTotaltime() {
 		return totaltime;
 	}
