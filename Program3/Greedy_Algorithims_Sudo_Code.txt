@@ -1,0 +1,14 @@
+Input: A list of times relating to swim, bike, and run times for campers in comma separated tuples.
+Output: A sequence of campers to start in and the total run time of the event.
+
+Array Campers [numOfCampers]
+Array Order [numOfCampers]
+
+For ( i = 0; i < numOfCampers; i++)
+	For each (CamperInOrder) 
+		If (Camper[i].runtime + Camper[i].biketime) > (CamperInOrder.totalTime)
+			Move all other CampersInOrder down 1
+			Replace CamperInOrder with i
+
+return Order
+return sum of all swim times + (final camper's run + bike time)
