@@ -1,0 +1,32 @@
+Input: A text file with 3 line of numbers
+    The first line has number of lockers, number of keys, and number of tennis balls
+    The second line has the numbers of the lockers of which keys you are given
+    The third line has the numbers of the lockers that contain tennis balls
+
+Output: The minimum number of lockers that can be opened to get all of the tennis balls
+
+Array Lockers [numOfLockers]
+Array Balls [numOfBalls]
+Array Keys [numOfKeys]
+
+Array Distances [numOfLockers][numOfKeys]
+
+totalDistance = 0
+
+For Each Locker with ball in Input  //Fills in table with distance to each ball from each key
+    For each key
+        Calculate distance to ball lockers
+        Distances[ballLocker][keyNumber] = distanceCalculated
+
+For each ball lockers
+    Find minimum distance to ball
+    If a previous path covers the ball
+        break
+    Else
+        totalDistance = totalDistance + minDistance
+        if other balls are covered in minPath
+            totalDistance = totalDistance - distance to covered balls
+
+return totalDistance;
+
+    
