@@ -89,6 +89,33 @@ public class Approximation_Algorithims {
 		System.out.println("SmartGreedyVertexCover:" + Arrays.toString(cover.toArray()));
 	}
 
+	public static int[] CreateVertexList(int numVerticies) {
+		int[] list = new int[numVerticies];
+		
+		for (int i = 0; i < numVerticies; i++) {
+			list[i] = i;
+		}
+		return list;
+	}
+
+	public static void BruteForceVertexCover(int[][] origGraph, int numVerticies) {
+		ArrayList<Integer> cover = new ArrayList<Integer>();
+		int[][] graph = CopyGraph(origGraph, numVerticies);
+		int[] vertexList = CreateVertexList(numVerticies);
+		
+		
+		for (int i = 0; i < (1<<numVerticies); i++) {
+			System.out.print("{ ");
+			
+			for (int j = 0; j < numVerticies; j++) {
+				if ((i & (1 << j)) > 0) {
+					System.out.print(vertexList[j] + " ");
+				}	
+			}	
+			System.out.println("}");
+		}
+	}
+
 	public static void printGraph(int[][] graph, int numVerticies) {
 		for (int i = 0; i < numVerticies; i++) {
 			for (int j = 0; j < numVerticies; j++) {
@@ -121,7 +148,9 @@ public class Approximation_Algorithims {
 
 		BasicGreedyVertexCover(graph, numVerticies);
 
-		printGraph(graph, numVerticies);
+		BruteForceVertexCover(graph, numVerticies);
+
+		//printGraph(graph, numVerticies);
 
 		sc.close();
 	}
