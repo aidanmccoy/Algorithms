@@ -70,7 +70,7 @@ public class Approximation_Algorithims {
 				graph[i][basicDegreeVertex] = 0;
 			}
 		}
-		System.out.println("BaiscGreedyVertexCover:" + Arrays.toString(cover.toArray()));
+		System.out.println("2-Approximation: " + Arrays.toString(cover.toArray()));
 	}
 
 	public static void SmartGreedyVertexCover(int[][] origGraph, int numVerticies) {
@@ -86,7 +86,7 @@ public class Approximation_Algorithims {
 				graph[i][maxDegreeVertex] = 0;
 			}
 		}
-		System.out.println("SmartGreedyVertexCover:" + Arrays.toString(cover.toArray()));
+		System.out.println("log-Approximation: " + Arrays.toString(cover.toArray()));
 	}
 
 	public static int[] CreateVertexList(int numVerticies) {
@@ -98,6 +98,19 @@ public class Approximation_Algorithims {
 		return list;
 	}
 
+	public static boolean CheckIfVertexCover(int[] cover, int[][] origGraph, int numVerticies) {
+		for (int i = 0; i < numVerticies; i++) {
+			for (int j = 0; j < numVerticies; j++) {
+				if (origGraph[i][j] == 1) {
+					/*if (!(ArrayUtils.contains(cover, i) || ArrayUtils.contains(cover, j))) {
+						return false;
+					}*/
+				}
+			}
+		}
+		return true;
+	}
+
 	public static void BruteForceVertexCover(int[][] origGraph, int numVerticies) {
 		ArrayList<Integer> cover = new ArrayList<Integer>();
 		int[][] graph = CopyGraph(origGraph, numVerticies);
@@ -105,16 +118,24 @@ public class Approximation_Algorithims {
 		
 		
 		for (int i = 0; i < (1<<numVerticies); i++) {
-			System.out.print("{ ");
+			//System.out.print("{ ");
 			
 			for (int j = 0; j < numVerticies; j++) {
 				if ((i & (1 << j)) > 0) {
-					System.out.print(vertexList[j] + " ");
+					//System.out.print(vertexList[j] + " ");
 				}	
 			}	
-			System.out.println("}");
+			//System.out.println("}");
 		}
+		//System.out.print("Exact Solution: " + printArray(vertexList));
 	}
+
+	/*public static void printArray(int[] array) {
+		for (int i = 0; i < array.size(); i++) {
+			System.out.print(array[i] + " ");
+		}
+		System.out.println();
+	}*/
 
 	public static void printGraph(int[][] graph, int numVerticies) {
 		for (int i = 0; i < numVerticies; i++) {

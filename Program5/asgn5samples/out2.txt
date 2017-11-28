@@ -1,3 +1,0 @@
-log-Approximation: 0 1
-2-Approximation: 0 1
-Exact Solution: 0 1
