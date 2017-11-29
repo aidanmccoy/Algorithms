@@ -1,8 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.lang.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Approximation_Algorithims {
@@ -70,7 +68,11 @@ public class Approximation_Algorithims {
 				graph[i][basicDegreeVertex] = 0;
 			}
 		}
-		System.out.println("2-Approximation: " + Arrays.toString(cover.toArray()));
+		System.out.print("2-Approximation: ");
+		for (int value : cover) {
+			System.out.print(value + " ");
+		}
+		System.out.println();
 	}
 
 	public static void SmartGreedyVertexCover(int[][] origGraph, int numVerticies) {
@@ -86,25 +88,29 @@ public class Approximation_Algorithims {
 				graph[i][maxDegreeVertex] = 0;
 			}
 		}
-		System.out.println("log-Approximation: " + Arrays.toString(cover.toArray()));
+		System.out.print("log-Approximation: ");
+		for (int value : cover) {
+			System.out.print(value + " ");
+		}
+		System.out.println();
 	}
 
 	public static int[] CreateVertexList(int numVerticies) {
 		int[] list = new int[numVerticies];
-		
+
 		for (int i = 0; i < numVerticies; i++) {
 			list[i] = i;
 		}
 		return list;
 	}
 
-	public static boolean CheckIfVertexCover(int[] cover, int[][] origGraph, int numVerticies) {
+	public static boolean CheckIfVertexCover(ArrayList<Integer> cover, int[][] origGraph, int numVerticies) {
 		for (int i = 0; i < numVerticies; i++) {
 			for (int j = 0; j < numVerticies; j++) {
 				if (origGraph[i][j] == 1) {
-					/*if (!(ArrayUtils.contains(cover, i) || ArrayUtils.contains(cover, j))) {
+					if (!(cover.contains(i) || cover.contains(j))) {
 						return false;
-					}*/
+					}
 				}
 			}
 		}
@@ -113,29 +119,31 @@ public class Approximation_Algorithims {
 
 	public static void BruteForceVertexCover(int[][] origGraph, int numVerticies) {
 		ArrayList<Integer> cover = new ArrayList<Integer>();
+		ArrayList<Integer> finalCover = new ArrayList<Integer>();
 		int[][] graph = CopyGraph(origGraph, numVerticies);
 		int[] vertexList = CreateVertexList(numVerticies);
-		
-		
-		for (int i = 0; i < (1<<numVerticies); i++) {
-			//System.out.print("{ ");
-			
+
+		for (int i = 0; i < (1 << numVerticies); i++) {
+
 			for (int j = 0; j < numVerticies; j++) {
 				if ((i & (1 << j)) > 0) {
-					//System.out.print(vertexList[j] + " ");
-				}	
-			}	
-			//System.out.println("}");
+					cover.add(vertexList[j]);
+				}
+			}
+			if (CheckIfVertexCover(cover, origGraph, numVerticies)) {
+				if (cover.size() < finalCover.size() || finalCover.isEmpty()) {
+					finalCover = new ArrayList<>(cover);
+				}
+			}
+			cover.clear();
 		}
-		//System.out.print("Exact Solution: " + printArray(vertexList));
-	}
 
-	/*public static void printArray(int[] array) {
-		for (int i = 0; i < array.size(); i++) {
-			System.out.print(array[i] + " ");
+		System.out.print("Exact Solution: ");
+		for (int value : finalCover) {
+			System.out.print(value + " ");
 		}
 		System.out.println();
-	}*/
+	}
 
 	public static void printGraph(int[][] graph, int numVerticies) {
 		for (int i = 0; i < numVerticies; i++) {
@@ -171,10 +179,9 @@ public class Approximation_Algorithims {
 
 		BruteForceVertexCover(graph, numVerticies);
 
-		//printGraph(graph, numVerticies);
+		// printGraph(graph, numVerticies);
 
 		sc.close();
 	}
 
 }
-
